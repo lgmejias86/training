@@ -16,5 +16,12 @@ body{
 	margin-top: -285px;
 	margin-left: -435px;
 	border-color: rgb(130, 175, 165);
-	
+}
+
+header{
+	height: 30px;
+	background-color: rgb(145, 205, 190);
+	font-size: 1.2em;
+	line-height: 30px;
+	padding: 5px;
 }
