@@ -1,0 +1,20 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	font-size: 0.9em;
+	font-family: Arial;
+	border-style: solid;
+	border-width: 1px;
+	position: absolute;
+	height: 570px;
+	width: 870px;
+	left: 50%;
+	top: 50%;
+	margin-top: -285px;
+	margin-left: -435px;
+	border-color: rgb(130, 175, 165);
+	
+}
