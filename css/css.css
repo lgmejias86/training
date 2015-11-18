@@ -36,6 +36,11 @@ fieldset{
 	border-width: 0;
 }
 
+legend{
+	height: 15px;
+	text-decoration: underline;
+}
+
 #register{
 	float: left;
 	margin: 20px 10px;
@@ -83,4 +88,8 @@ label{
 #lunch, #payment, #otherfields{
 	width: 415px;
 	padding-left: 20px; 
+}
+
+#lunch legend{
+	padding-top: 40px;
 }
