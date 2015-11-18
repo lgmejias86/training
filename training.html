@@ -55,7 +55,7 @@
             </fieldset>
             <fieldset id="lunch">
                 <legend>Lunch</legend>
-                <div id="mealDiv" class="notCheckbox">
+                <div id="mealDiv">
                     <label for="meal">Meal Preferences</label>
                     <select id="meal" name="meal">
                         <option value="1">Vegetarian</option>
@@ -64,6 +64,21 @@
             </fieldset>
             <fieldset id="payment">
                 <legend>Payment Details</legend>
+                <div id="paymentDiv">
+                    <label for="payment">Payment Mode</label>
+                    <div id="cashDiv" class="checkbox">
+                        <input type="checkbox" class="checkbox" id="cash">
+                        <label for="cash">Cash</label>
+                    </div>
+                    <div id="chequeDiv" class="checkbox">
+                        <input type="checkbox" class="checkbox" id="cheque" name="cheque">
+                        <label for="cheque">Cheque</label>
+                    </div>
+                    <div id="demandDiv" class="checkbox">
+                        <input type="checkbox" class="checkbox" id="demand" name="demand">
+                        <label for="demand">Demand Draf</label>
+                    </div>
+                </div>
             </fieldset>
             <fieldset id="othersfields">
                 

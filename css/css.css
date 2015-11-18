@@ -50,12 +50,15 @@ legend{
 }
 
 form div{
- 	position: relative;
+	position: relative;
 	margin-top: 10px;
+}
+
+#register div, #lunch div, #otherfields div{
 	height: 35px;
 }
 
-input, textarea, select{
+#register input, #lunch input, #otherfields input, textarea, select{
 	position: absolute;
 	height: 20px;
 	
@@ -92,4 +95,19 @@ label{
 
 #lunch legend{
 	padding-top: 40px;
+}
+
+#payment legend{
+	padding-top: 20px;
+}
+
+#paymentDiv div{
+	margin: 10px 0;
+	height: 15px;
+}
+
+#payment input{
+	margin-left: 200px;
+	margin-right: 5px;
+	height: 15px;
 }
