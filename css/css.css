@@ -44,8 +44,39 @@ fieldset{
 	height: 450px;
 }
 
+form div{
+ 	position: relative;
+	margin-top: 10px;
+	height: 35px;
+}
+
+input, textarea, select{
+	position: absolute;
+	height: 20px;
+	
+	top: 50%;
+	margin-top: -10px;
+	
+	margin-left: 200px;
+	width: 180px;
+	
+}
+
+textarea{
+	height: 100%;
+	top: 0;
+	margin-top: 0;
+}
+
+label{
+	position: absolute;
+}
+
+#addressDiv{
+	height: 65px;
+}
+
 #lunch, #payment, #otherfields{
 	width: 415px;
 	padding-left: 20px; 
-	
 }
