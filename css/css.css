@@ -26,6 +26,31 @@ header{
 	padding: 5px;
 }
 
+#title{
+	float: left;
+	height: 30px;
+	width: 200px;
+	
+}
+
+#actionsDiv{
+	position: absolute;
+	height: 300px;
+	width: 90px;
+	left: 230px;
+}
+
+#actions{
+	top: 0;
+}
+
+#actions span{
+	font-size: .7em;
+	background:url("../img/u.gif") no-repeat scroll 90% center transparent;
+	display: block;
+	cursor: context-menu;
+}
+
 form {
 	height: 529px;
 	font-size: 0.8em;
