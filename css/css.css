@@ -88,7 +88,7 @@ label{
 	height: 65px;
 }
 
-#lunch, #payment, #otherfields{
+#lunch, #payment, #othersfields{
 	width: 415px;
 	padding-left: 20px; 
 }
@@ -111,3 +111,11 @@ label{
 	margin-right: 5px;
 	height: 15px;
 }
+
+#bottom{
+	clear: both;
+	background-color: rgb(228, 228, 228);
+	height: 39px;
+	margin: 1px;
+}
+
