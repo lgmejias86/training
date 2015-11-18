@@ -119,3 +119,31 @@ label{
 	margin: 1px;
 }
 
+#bottomDiv{
+	margin: 0;
+	height: 100%;
+}
+
+#bottom input{
+	position: absolute;
+	background-color: rgb(125, 193, 176);
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(130, 175, 165);
+	height: 25px;
+	width: 100px;
+	top: 50%;
+	margin-top: -10px;
+	font-size:1.5em;
+	color: white;
+
+}
+
+#submit{
+	margin-left: 333px;
+	vertical-align: middle;
+}
+
+#reset{
+	margin-left: 437px;
+}
