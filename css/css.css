@@ -54,11 +54,11 @@ form div{
 	margin-top: 10px;
 }
 
-#register div, #lunch div, #otherfields div{
+#register div, #lunch div, #othersfields div{
 	height: 35px;
 }
 
-#register input, #lunch input, #otherfields input, textarea, select{
+#register input, #lunch input, #othersfields input, textarea, select{
 	position: absolute;
 	height: 20px;
 	
