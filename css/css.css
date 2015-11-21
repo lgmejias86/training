@@ -18,7 +18,7 @@ body{
 	border-color: rgb(130, 175, 165);
 }
 
-header{
+#header{
 	height: 30px;
 	background-color: rgb(145, 205, 190);
 	font-size: 1.2em;

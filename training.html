@@ -5,28 +5,29 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/css.css">
     </head>
+    
     <body>
-    	<header>
+        <div id="header">
             <div id="title">
-                 <b>Workshop Registration</b>
+                <b>Workshop Registration</b>
             </div>
             <div id="actionsDiv">
-                <ul id="actions"><span>More Actions</span>
-                    
+                <ul id="actions">
+                    <span>More Actions</span>
                 </ul>
             </div>
-        </header>
+        </div>
         <form action="action">
             <fieldset id="register">
                 <legend>Register now while seats are aviliable!</legend>
-                    <b>
+                <b>
                     <div id="firstNameDiv">
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firsName" required/>
                     </div>
                     <div id="lastNameDiv">
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" requiered/>
+                        <input type="text" id="lastName" name="lastName" required/>
                     </div>
                     <div id="companyDiv">
                         <label for="company">Company/Institution</label>
@@ -38,7 +39,7 @@
                     </div>
                     <div id="cityDiv">
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city"/>
+                        <input type="text" id="city" name="city" />
                     </div>
                     <div id="stateDiv">
                         <label for="state">State/Province/Región</label>
@@ -60,53 +61,53 @@
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" required/>
                     </div>
-                    </b>
+                </b>
             </fieldset>
             <fieldset id="lunch">
                 <legend>Lunch</legend>
                 <b>
-                <div id="mealDiv">
-                    <label for="meal">Meal Preferences</label>
-                    <select id="meal" name="meal">
-                        <option value="1">Vegetarian</option>
-                    </select>
-                </div>
+                    <div id="mealDiv">
+                        <label for="meal">Meal Preferences</label>
+                        <select id="meal" name="meal">
+                            <option value="1">Vegetarian</option>
+                        </select>
+                    </div>
                 </b>
             </fieldset>
             <fieldset id="payment">
                 <legend>Payment Details</legend>
                 <div id="paymentDiv">
                     <b>
-                    <label for="payment">Payment Mode</label>
+                        <label for="payment">Payment Mode</label>
                     </b>
                     <div id="cashDiv">
-                        <input type="checkbox" id="cash"/>
+                        <input type="checkbox" id="cash" />
                         <label for="cash">Cash</label>
                     </div>
                     <div id="chequeDiv">
-                        <input type="checkbox" id="cheque" name="cheque"/>
+                        <input type="checkbox" id="cheque" name="cheque" />
                         <label for="cheque">Cheque</label>
                     </div>
                     <div id="demandDiv">
-                        <input type="checkbox" id="demand" name="demand"/>
+                        <input type="checkbox" id="demand" name="demand" />
                         <label for="demand">Demand Draf</label>
                     </div>
                 </div>
             </fieldset>
             <fieldset id="othersfields">
                 <b>
-                <div id="chequenoDiv">
-                    <label for="chequeno">DD/Cheque No.</label>
-                    <input type="text" id="chequeno" name="chequeno"></input>
-                </div>
-                <div id="drawnDiv">
-                    <label for="drawn">Drawn on (Bank Name)</label>
-                    <input type="text" id="drawn" name="drawn"></input>
-                </div>
-                <div id="payableDiv">
-                    <label for="payable">Payable at</label>
-                    <input type="text" id="payable" name="payable"></input>
-                </div>
+                    <div id="chequenoDiv">
+                        <label for="chequeno">DD/Cheque No.</label>
+                        <input type="text" id="chequeno" name="chequeno"></input>
+                    </div>
+                    <div id="drawnDiv">
+                        <label for="drawn">Drawn on (Bank Name)</label>
+                        <input type="text" id="drawn" name="drawn"></input>
+                    </div>
+                    <div id="payableDiv">
+                        <label for="payable">Payable at</label>
+                        <input type="text" id="payable" name="payable"></input>
+                    </div>
                 </b>
             </fieldset>
             <fieldset id="bottom">
@@ -116,6 +117,6 @@
                 </div>
             </fieldset>
         </form>
- 	</body>
+    </body>
 
 </html>
