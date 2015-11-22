@@ -107,6 +107,7 @@ label{
 	top: 50%;
 	margin-top: -10px;
 	line-height: 20px;
+	font-weight: bold;
 }
 
 #register #addressDiv{
@@ -129,6 +130,11 @@ label{
 #paymentDiv div{
 	margin: 10px 0;
 	height: 15px;
+}
+
+
+#paymentDiv div label{
+	font-weight: normal;
 }
 
 #payment input{
