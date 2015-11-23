@@ -2,113 +2,120 @@
 <html>
     
     <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="css/css.css">
+        <link title="compact" rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="dijit\themes\claro\claro.css">
+        <meta charset="utf-8" http-equiv="Default-Style" content="compact">
+        <script>dojoConfig = {parseOnLoad: true, async: true}</script>
+        <script src="dojo/dojo.js"></script>
+        <script>
+            require(["dojo/parser", "dijit/form/Form", "dijit/form/TextBox", "dijit/Fieldset", "dijit/form/SimpleTextarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dijit/form/CheckBox", "dijit/form/Button"]);
+        </script>
     </head>
-    
-    <body>
-        <div id="header">
+    <body class="claro">
+    	<div id="header">
             <div id="title">
-                <b>Workshop Registration</b>
+                 <b>Workshop Registration</b>
             </div>
             <div id="actionsDiv">
-                <ul id="actions">
-                    <span>More Actions</span>
+                <ul id="actions"><span>More Actions</span>
+                    
                 </ul>
             </div>
         </div>
-        <form action="action">
-            <fieldset id="register">
+        <form data-dojo-type="dijit/form/Form" id="myForm" action="action">
+            <fieldset id="register" data-dojo-type="dijit/Fieldset">
                 <legend>Register now while seats are aviliable!</legend>
-                <div id="firstNameDiv">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firsName" required/>
-                </div>
-                <div id="lastNameDiv">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required/>
-                </div>
-                <div id="companyDiv">
-                    <label for="company">Company/Institution</label>
-                    <input type="text" id="company" name="company" required/>
-                </div>
-                <div id="addressDiv">
-                    <label for="address">Address</label>
-                    <textarea row="65" id="address" name="address" required></textarea>
-                </div>
-                <div id="cityDiv">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" />
-                </div>
-                <div id="stateDiv">
-                    <label for="state">State/Province/Región</label>
-                    <select id="state">
-                        <option>-Select</option>
-                    </select>
-                </div>
-                <div id="countryDiv">
-                    <label for="country">Country</label>
-                    <select id="country">
-                        <option>-Select-</option>
-                    </select>
-                </div>
-                <div id="emailDiv">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required/>
-                </div>
-                <div id="phoneDiv">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required/>
-                </div>
+                    <div id="firstNameDiv" class="div">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firsName" required data-dojo-type="dijit/form/TextBox"/>
+                    </div>
+                    <div id="lastNameDiv" class="div">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required data-dojo-type="dijit/form/TextBox"/>
+                    </div>
+                    <div id="companyDiv" class="div">
+                        <label for="company">Company/Institution</label>
+                        <input type="text" id="company" name="company" required data-dojo-type="dijit/form/TextBox"/>
+                    </div>
+                    <div id="addressDiv" class="div">
+                        <label for="address">Address</label>
+                        <textarea row="65" id="address" name="address" required data-dojo-type="dijit/form/SimpleTextarea"></textarea>
+                    </div>
+                    <div id="cityDiv" class="div">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" data-dojo-type="dijit/form/TextBox"/>
+                    </div>
+                    <div id="stateDiv" class="div">
+                        <label for="state">State/Province/Región</label>
+                        <select id="state" data-dojo-type="dijit/form/ComboBox">
+                            <option value="1" selected="selected">-Select</option>
+                        </select>
+                    </div>
+                    <div id="countryDiv" class="div">
+                        <label for="country">Country</label>
+                        <select id="country" data-dojo-type="dijit/form/ComboBox">
+                            <option value="1" selected="selected">-Select-</option>
+                        </select>
+                    </div>
+                    <div id="emailDiv" class="div">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required data-dojo-type="dijit/form/TextBox"/>
+                    </div>
+                    <div id="phoneDiv" class="div">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required data-dojo-type="dijit/form/ValidationTextBox"
+                            data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
+                    </div>
             </fieldset>
-            <fieldset id="lunch">
+            <fieldset id="lunch" data-dojo-type="dijit/Fieldset">
                 <legend>Lunch</legend>
-                <div id="mealDiv">
+                <div id="mealDiv" class="div">
                     <label for="meal">Meal Preferences</label>
-                    <select id="meal" name="meal">
-                        <option value="1">Vegetarian</option>
+                    <select id="meal" name="meal" data-dojo-type="dijit/form/ComboBox">
+                        <option value="1" selected="selected">Vegetarian</option>
+                        <option value="1" selected="selected">Vegetarian2</option>
                     </select>
                 </div>
             </fieldset>
-            <fieldset id="payment">
+            <fieldset id="payment" data-dojo-type="dijit/Fieldset">
                 <legend>Payment Details</legend>
-                <div id="paymentDiv">
+                <div id="paymentDiv" class="div">
                     <label for="payment">Payment Mode</label>
-                    <div id="cashDiv">
-                        <input type="checkbox" id="cash" />
+                    <div id="cashDiv" class="div checkDiv">
+                        <input type="checkbox" id="cash" data-dojo-type="dijit/form/CheckBox"/>
                         <label for="cash">Cash</label>
                     </div>
-                    <div id="chequeDiv">
-                        <input type="checkbox" id="cheque" name="cheque" />
+                    <div id="chequeDiv" class="div checkDiv">
+                        <input type="checkbox" id="cheque" name="cheque" data-dojo-type="dijit/form/CheckBox"/>
                         <label for="cheque">Cheque</label>
                     </div>
-                    <div id="demandDiv">
-                        <input type="checkbox" id="demand" name="demand" />
+                    <div id="demandDiv" class="div checkDiv">
+                        <input type="checkbox" id="demand" name="demand" data-dojo-type="dijit/form/CheckBox"/>
                         <label for="demand">Demand Draf</label>
                     </div>
                 </div>
             </fieldset>
-            <fieldset id="othersfields">
-                <div id="chequenoDiv">
+            <fieldset id="othersfields" data-dojo-type="dijit/Fieldset">
+                <div id="chequenoDiv" class="div">
                     <label for="chequeno">DD/Cheque No.</label>
-                    <input type="text" id="chequeno" name="chequeno"></input>
+                    <input type="text" id="chequeno" name="chequeno" data-dojo-type="dijit/form/TextBox"/>
                 </div>
-                <div id="drawnDiv">
+                <div id="drawnDiv" class="div">
                     <label for="drawn">Drawn on (Bank Name)</label>
-                    <input type="text" id="drawn" name="drawn"></input>
+                    <input type="text" id="drawn" name="drawn" data-dojo-type="dijit/form/TextBox"/>
                 </div>
-                <div id="payableDiv">
+                <div id="payableDiv" class="div">
                     <label for="payable">Payable at</label>
-                    <input type="text" id="payable" name="payable"></input>
+                    <input type="text" id="payable" name="payable" data-dojo-type="dijit/form/TextBox"/>
                 </div>
             </fieldset>
-            <fieldset id="bottom">
-                <div id="bottomDiv">
-                    <input id="submit" type="submit" value="Submit"></input>
-                    <input id="reset" type="reset" value="Reset"></input>
+            <fieldset id="bottom" data-dojo-type="dijit/Fieldset">
+                <div id="bottomDiv" class="div">
+                    <button id="submit" type="submit" value="Submit" data-dojo-type="dijit/form/Button">Submit</button>
+                    <button id="reset" type="reset" value="Reset" data-dojo-type="dijit/form/Button">Reset</button>
                 </div>
             </fieldset>
         </form>
-    </body>
+ 	</body>
 
 </html>
