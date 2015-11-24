@@ -60,6 +60,7 @@ form {
 fieldset{
 	/*set this for the fieldset don't have any border*/
 	border: none !important;
+	border-radius: 0;
 }
 
 legend{
@@ -109,7 +110,8 @@ div.dijitTextBox input{
 }
 
 #register div.dijitTextBox input, #lunch div.dijitTextBox input, #othersfields div.dijitTextBox input{
-	height: 15px;
+	/*!important is necessary for the ie*/
+	height: 15px !important;
 	line-height: 15px;
 }
 
@@ -169,6 +171,7 @@ label{
 	margin: 1px;
 }
 
+/*new*/
 #bottom legend{
 	font-size: 0;
 }
@@ -183,10 +186,14 @@ label{
 	border-width: 1px;
 	border-style: solid;
 	border-color: rgb(130, 175, 165);
-	height: 25px;
+	
 	width: 100px;
 	font-size:1.5em;
+	font-weight: bold;
 	color: white;
+	background-image: none;
+
+	border-radius: 0;
 }
 
 #bottomDiv{

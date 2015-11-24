@@ -2,13 +2,23 @@
 <html>
     
     <head>
-        <link title="compact" rel="stylesheet" href="css/css.css">
-        <link rel="stylesheet" href="dijit\themes\claro\claro.css">
-        <meta charset="utf-8" http-equiv="Default-Style" content="compact">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="dijit/themes/claro/claro.css">
         <script>dojoConfig = {parseOnLoad: true, async: true}</script>
         <script src="dojo/dojo.js"></script>
         <script>
-            require(["dojo/parser", "dijit/form/Form", "dijit/form/TextBox", "dijit/Fieldset", "dijit/form/SimpleTextarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dijit/form/CheckBox", "dijit/form/Button"]);
+            require(["dojo/parser", "dojo/query", "dojo/dom", "dojo/dom-construct", "dojo", "dojo/NodeList-dom", "dijit/form/Form", "dijit/form/TextBox", "dijit/Fieldset", "dijit/form/SimpleTextarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dijit/form/CheckBox", "dijit/form/Button"], function(parser, query, dom, domConstruct, dojo){
+                parser.parse();
+                var legendspan = query("legend .dijitInline.dijitArrowNode");
+                var legend1 = query("#othersfields legend")[0];
+                var legend2 = query("#bottom legend")[0];
+                domConstruct.destroy(legend1);
+                domConstruct.destroy(legend2);
+                for (var i = 0; i < legendspan.length; i++) {
+                    domConstruct.destroy(legendspan[i])
+                };
+            });
         </script>
     </head>
     <body class="claro">
@@ -48,7 +58,7 @@
                     <div id="stateDiv" class="div">
                         <label for="state">State/Province/Región</label>
                         <select id="state" data-dojo-type="dijit/form/ComboBox">
-                            <option value="1" selected="selected">-Select</option>
+                            <option value="1" selected="selected">-Select-</option>
                         </select>
                     </div>
                     <div id="countryDiv" class="div">
@@ -63,8 +73,8 @@
                     </div>
                     <div id="phoneDiv" class="div">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required data-dojo-type="dijit/form/ValidationTextBox"
-                            data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
+                        <input type="tel" id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox"
+                            data-dojo-props="required:'true', regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
                     </div>
             </fieldset>
             <fieldset id="lunch" data-dojo-type="dijit/Fieldset">
@@ -116,6 +126,7 @@
                 </div>
             </fieldset>
         </form>
+        
  	</body>
 
 </html>
