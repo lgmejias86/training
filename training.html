@@ -53,7 +53,10 @@
                 }else{
                    if(this.validate()){
                         val = true;
-                    } 
+                    }else{
+                        alert('Form contains invalid data.  Please correct first');
+                        return false;
+                    }
                 }
                 if(f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
                     val = false;
@@ -61,17 +64,20 @@
                 if(val){
                     return confirm('Form is valid, press OK to submit');
                 }else{
-                    require(["dojo/dom", "dojo/dom-construct", "dojo/domReady!"],
-                        function(dom, domConstruct) {
-                            var address = dom.byId("a");
-                            domConstruct.create("p", {
-                                innerHTML: "*",
-                                style: {
-                                    color: "#ff0000"
-                                }
-                            }, address);
+                    require(["dojo/query", "dojo/dom-construct", "dojo/domReady!"],
+                        function(query, domConstruct) {
+                            var rojos = query("form label.required");
+                            for (var i = 0; i < rojos.length; i++) {
+                                domConstruct.create("p", {
+                                    innerHTML: "*",
+                                    style: {
+                                        color: "#ff0000"
+                                    }
+                                }, rojos[i]);
+                            };
+                            
                     });
-                    alert('Form contains invalid data.  Please correct first');
+                    alert('All the elements with the * in red are required');
                         return false;
                 }
                 return true;
@@ -79,19 +85,19 @@
             <fieldset id="register" data-dojo-type="dijit/Fieldset">
                 <legend>Register now while seats are aviliable!</legend>
                     <div id="firstNameDiv" class="div">
-                        <label for="firstName">First Name</label>
+                        <label for="firstName" class="required">First Name</label>
                         <input id="firstName" name="firsName" data-dojo-type="dijit/form/TextBox"/>
                     </div>
                     <div id="lastNameDiv" class="div">
-                        <label id="a" for="lastName">Last Name</label>
+                        <label id="a" for="lastName" class="required">Last Name</label>
                         <input id="lastName" name="lastName" data-dojo-type="dijit/form/TextBox"/>
                     </div>
                     <div id="companyDiv" class="div">
-                        <label for="company">Company/Institution</label>
+                        <label for="company" class="required">Company/Institution</label>
                         <input id="company" name="company" data-dojo-type="dijit/form/TextBox"/>
                     </div>
-                    <div id="addressDiv" class="div">
-                        <label for="address">Address</label>
+                    <div id="addressDiv" class="div" >
+                        <label for="address" class="required">Address</label>
                         <textarea id="address" name="address" data-dojo-type="dijit/form/Textarea"></textarea>
                     </div>
                     <div id="cityDiv" class="div">
@@ -111,11 +117,11 @@
                         </select>
                     </div>
                     <div id="emailDiv" class="div">
-                        <label for="email">Email</label>
+                        <label for="email"  class="required">Email</label>
                         <input id="email" name="email" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="validator:dojox.validate.isEmailAddress, invalidMessage:'This is not a valid email!'"/>
                     </div>
                     <div id="phoneDiv" class="div">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone" class="required">Phone Number</label>
                         <input id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox"
                             data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
                     </div>
