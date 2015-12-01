@@ -8,64 +8,41 @@
         <script>dojoConfig = {parseOnLoad: true, async: true}</script>
         <script src="dojo/dojo.js"></script>
         <script>
-            require(["dojo/parser", "dojo/query", "dojo/dom", "dojo/dom-construct", "dojo", "dojo/NodeList-dom", "dijit/form/Form", "dijit/form/TextBox", "dijit/Fieldset", "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dijit/form/CheckBox", "dijit/form/Button", "dojox/validate/web"], function(parser, query, dom, domConstruct, dojo){
-                parser.parse();
-                var legendspan = query("legend .dijitInline.dijitArrowNode");
-                var legend1 = query("#othersfields legend")[0];
-                var legend2 = query("#bottom legend")[0];
-                domConstruct.destroy(legend1);
-                domConstruct.destroy(legend2);
-                for (var i = 0; i < legendspan.length; i++) {
-                    domConstruct.destroy(legendspan[i])
-                };
-            });
+            
+            require([
+                "dojo/_base/declare", "dojo/parser", "dojo/ready",
+                "dijit/_WidgetBase", "dijit/_TemplatedMixin",
+                "dijit/_WidgetsInTemplateMixin", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox"
+            ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
+            _WidgetsInTemplateMixin, dom, domConstruct, query, template){
 
-        </script>
-    </head>
-    <body class="claro">
-    	<div id="header">
-            <div id="title">
-                 <b>Workshop Registration</b>
-            </div>
-            <div id="actionsDiv">
-                <ul id="actions"><span>More Actions</span>
-                    
-                </ul>
-            </div>
-        </div>
-        <form data-dojo-type="dijit/form/Form" id="myForm" action="action">
-            <script type="dojo/on" data-dojo-event="reset">
-                return confirm('Press OK to reset widget values');
-            </script>
+                declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
+                    templateString: template,
 
-            <script type="dojo/on" data-dojo-event="submit">
-                require(["dojo/query", "dojo/dom-construct"], function(query, domConstruct){
-                    var ps = query("form label p");
-                    for (var i = 0; i < ps.length; i++) {
-                        domConstruct.destroy(ps[i]);
-                    };
-                });
-
-                var val = false;
-                var f = document.getElementById("myForm");
-                if(f.email.value ==""){
-                    val = false;
-                }else{
-                   if(this.validate()){
-                        val = true;
-                    }else{
-                        alert('Form contains invalid data.  Please correct first');
-                        return false;
-                    }
-                }
-                if(f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
-                    val = false;
-                }
-                if(val){
-                    return confirm('Form is valid, press OK to submit');
-                }else{
-                    require(["dojo/query", "dojo/dom-construct", "dojo/domReady!"],
-                        function(query, domConstruct) {
+                    valid: function(){
+                        var ps = query("form label p");
+                        for (var i = 0; i < ps.length; i++) {
+                            domConstruct.destroy(ps[i]);
+                        };
+                        var form = dom.byId("myForm");
+                        var val = false;
+                        var f = document.getElementById("myForm");
+                        if(f.email.value ==""){
+                            val = false;
+                        }else{
+                           if(this.emailNode.isValid()&&this.phoneNode.isValid()){
+                                val = true;
+                            }else{
+                                alert('Form contains invalid data.  Please correct first');
+                                return false;
+                            }
+                        }
+                        if(f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
+                            val = false;
+                        }
+                        if(val){
+                            return confirm('Form is valid, press OK to submit');
+                        }else{
                             var rojos = query("form label.required");
                             for (var i = 0; i < rojos.length; i++) {
                                 domConstruct.create("p", {
@@ -74,107 +51,48 @@
                                         color: "#ff0000"
                                     }
                                 }, rojos[i]);
-                            };
-                            
-                    });
-                    alert('All the elements with the * in red are required');
-                        return false;
-                }
-                return true;
-            </script>
-            <fieldset id="register" data-dojo-type="dijit/Fieldset">
-                <legend>Register now while seats are aviliable!</legend>
-                    <div id="firstNameDiv" class="div">
-                        <label for="firstName" class="required">First Name</label>
-                        <input id="firstName" name="firsName" data-dojo-type="dijit/form/TextBox"/>
-                    </div>
-                    <div id="lastNameDiv" class="div">
-                        <label id="a" for="lastName" class="required">Last Name</label>
-                        <input id="lastName" name="lastName" data-dojo-type="dijit/form/TextBox"/>
-                    </div>
-                    <div id="companyDiv" class="div">
-                        <label for="company" class="required">Company/Institution</label>
-                        <input id="company" name="company" data-dojo-type="dijit/form/TextBox"/>
-                    </div>
-                    <div id="addressDiv" class="div" >
-                        <label for="address" class="required">Address</label>
-                        <textarea id="address" name="address" data-dojo-type="dijit/form/Textarea"></textarea>
-                    </div>
-                    <div id="cityDiv" class="div">
-                        <label for="city">City</label>
-                        <input id="city" name="city" data-dojo-type="dijit/form/TextBox"/>
-                    </div>
-                    <div id="stateDiv" class="div">
-                        <label for="state">State/Province/Región</label>
-                        <select id="state" data-dojo-type="dijit/form/ComboBox">
-                            <option value="1" selected="selected">-Select-</option>
-                        </select>
-                    </div>
-                    <div id="countryDiv" class="div">
-                        <label for="country">Country</label>
-                        <select id="country" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'country'">
-                            <option value="1" selected="selected">-Select-</option>
-                        </select>
-                    </div>
-                    <div id="emailDiv" class="div">
-                        <label for="email"  class="required">Email</label>
-                        <input id="email" name="email" data-dojo-type="dijit/form/ValidationTextBox"  data-dojo-props="validator:dojox.validate.isEmailAddress, invalidMessage:'This is not a valid email!'"/>
-                    </div>
-                    <div id="phoneDiv" class="div">
-                        <label for="phone" class="required">Phone Number</label>
-                        <input id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox"
-                            data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
-                    </div>
-            </fieldset>
-            <fieldset id="lunch" data-dojo-type="dijit/Fieldset">
-                <legend>Lunch</legend>
-                <div id="mealDiv" class="div">
-                    <label for="meal">Meal Preferences</label>
-                    <select id="meal" name="meal" data-dojo-type="dijit/form/ComboBox">
-                        <option value="1" selected="selected">Vegetarian</option>
-                        <option value="1" selected="selected">Vegetarian2</option>
-                    </select>
+                            }
+                            alert('All the elements with the * in red are required');
+                            return false;
+                        }
+                        return true;
+                    },
+
+                    postCreate: function(){
+                        
+                        var legendspan = query("legend .dijitInline.dijitArrowNode");
+                        var legend1 = query("#othersfields legend")[0];
+                        var legend2 = query("#bottom legend")[0];
+                        domConstruct.destroy(legend1);
+                        domConstruct.destroy(legend2);
+                        for (var i = 0; i < legendspan.length; i++) {
+                            domConstruct.destroy(legendspan[i])
+                        };
+                    }
+                    
+                });
+                ready(function(){
+                    parser.parse();
+                });
+            });
+        </script>
+    </head>
+    <body class="claro">
+        <div id="containerDiv">
+        	<div id="header">
+                <div id="title">
+                     <b>Workshop Registration</b>
                 </div>
-            </fieldset>
-            <fieldset id="payment" data-dojo-type="dijit/Fieldset">
-                <legend>Payment Details</legend>
-                <div id="paymentDiv" class="div">
-                    <label for="payment">Payment Mode</label>
-                    <div id="cashDiv" class="div checkDiv">
-                        <input type="checkbox" id="cash" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="cash">Cash</label>
-                    </div>
-                    <div id="chequeDiv" class="div checkDiv">
-                        <input type="checkbox" id="cheque" name="cheque" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="cheque">Cheque</label>
-                    </div>
-                    <div id="demandDiv" class="div checkDiv">
-                        <input type="checkbox" id="demand" name="demand" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="demand">Demand Draf</label>
-                    </div>
+                <div id="actionsDiv">
+                    <ul id="actions"><span>More Actions</span>
+                        
+                    </ul>
                 </div>
-            </fieldset>
-            <fieldset id="othersfields" data-dojo-type="dijit/Fieldset">
-                <div id="chequenoDiv" class="div">
-                    <label for="chequeno">DD/Cheque No.</label>
-                    <input type="text" id="chequeno" name="chequeno" data-dojo-type="dijit/form/TextBox"/>
-                </div>
-                <div id="drawnDiv" class="div">
-                    <label for="drawn">Drawn on (Bank Name)</label>
-                    <input type="text" id="drawn" name="drawn" data-dojo-type="dijit/form/TextBox"/>
-                </div>
-                <div id="payableDiv" class="div">
-                    <label for="payable">Payable at</label>
-                    <input type="text" id="payable" name="payable" data-dojo-type="dijit/form/TextBox"/>
-                </div>
-            </fieldset>
-            <fieldset id="bottom" data-dojo-type="dijit/Fieldset">
-                <div id="bottomDiv" class="div">
-                    <button id="submit" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'submit'">Submit</button>
-                    <button id="reset" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'reset'">Reset</button>
-                </div>
-            </fieldset>
-        </form>
+            </div>
+            <form data-dojo-type="dijit/form/Form" id="myForm" action="">
+                <span data-dojo-type="form"></span>
+            </form>
+        </div>
  	</body>
 
 </html>
