@@ -1,4 +1,5 @@
 <div>
+    <form data-dojo-type="dijit/form/Form" id="myForm" action="">
         <fieldset id="register" data-dojo-type="dijit/Fieldset">
             <legend>Register now while seats are aviliable!</legend>
                 <div id="firstNameDiv" class="div">
@@ -87,7 +88,8 @@
         <fieldset id="bottom" data-dojo-type="dijit/Fieldset">
             <div id="bottomDiv" class="div">
                 <button id="submit" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'button'" data-dojo-attach-event="onClick: valid">Submit</button>
-                <button id="reset" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'reset'">Reset</button>
+                <button id="reset" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'reset'" data-dojo-attach-event="onClick: reset">Reset</button>
             </div>
         </fieldset>
+     </form>
 </div>

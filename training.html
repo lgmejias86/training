@@ -19,6 +19,11 @@
                 declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
                     templateString: template,
 
+                    reset: function(){
+                        var f = document.getElementById("myForm");
+                        return confirm('Press OK to reset widget values');
+                    },
+
                     valid: function(){
                         var ps = query("form label p");
                         for (var i = 0; i < ps.length; i++) {
@@ -27,7 +32,7 @@
                         var form = dom.byId("myForm");
                         var val = false;
                         var f = document.getElementById("myForm");
-                        if(f.email.value ==""){
+                        if(f.email.value ==""||f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
                             val = false;
                         }else{
                            if(this.emailNode.isValid()&&this.phoneNode.isValid()){
@@ -37,11 +42,11 @@
                                 return false;
                             }
                         }
-                        if(f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
-                            val = false;
-                        }
                         if(val){
-                            return confirm('Form is valid, press OK to submit');
+                            var submit = confirm('Form is valid, press OK to submit');
+                            if(submit){
+                                f.submit();
+                            }
                         }else{
                             var rojos = query("form label.required");
                             for (var i = 0; i < rojos.length; i++) {
@@ -89,9 +94,8 @@
                     </ul>
                 </div>
             </div>
-            <form data-dojo-type="dijit/form/Form" id="myForm" action="">
+            
                 <span data-dojo-type="form"></span>
-            </form>
         </div>
  	</body>
 
