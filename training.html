@@ -10,11 +10,11 @@
         <script>
             
             require([
-                "dojo/request", "dojo/_base/declare", "dojo/parser", "dojo/ready",
+                "dojo/_base/declare", "dojo/parser", "dojo/ready",
                 "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dojo/dom", "dojo/dom-construct", "dojo/query", "myApp/myJs/dialogWidget", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog"
-            ], function(request, declare, parser, ready, _WidgetBase, _TemplatedMixin,
-            _WidgetsInTemplateMixin, dom, domConstruct, query, DialogWidget, template){
+                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog"
+            ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
+            _WidgetsInTemplateMixin, registry, dom, domConstruct, query, template){
 
                 declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
                     templateString: template,
@@ -43,7 +43,7 @@
                             }
                         }
                         if(val){
-                            var container = dom.byId("containerDiv");
+                            /*var container = dom.byId("containerDiv");
                                 var inputs = query("form [name]");
                                 var attributes = ["firstName",
                                                 "lastName",
@@ -73,8 +73,8 @@
                                         array[i] = {attr: attributes[i], value: inputs[i].value};
                                     }
                                 };
-                                var dialogWidget = new DialogWidget(array).placeAt(container);
-                                dialogWidget.show();
+                                var dialogWidget = new DialogWidget(array).placeAt(container);*/
+                                registry.byId("myConfirmDialog").show();
                         }else{
                             var rojos = query("form label.required");
                             for (var i = 0; i < rojos.length; i++) {
@@ -111,6 +111,29 @@
         </script>
     </head>
     <body class="claro">
+        <div data-dojo-type="dijit/Dialog" id="myConfirmDialog" data-dojo-id="myConfirmDialog" title="Confirm Dialog" style="display: none">
+            <div class="dijitDialogPaneContentArea">
+                <strong>First Name:</strong> </br>
+                
+            </div>
+
+            <div class="dijitDialogPaneActionBar">
+                <button data-dojo-type="dijit/form/Button" type="button">OK
+                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                        require(["dojo/dom", "dojo/dom-construct"], function(dom, domConstruct){
+                            myConfirmDialog.hide();
+                            var form = dom.byId("myForm");
+                            form.submit();
+                        });
+                    </script>
+                </button>
+                <button data-dojo-type="dijit/form/Button" type="button">Cancel
+                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                        myConfirmDialog.hide();
+                    </script>
+                </button>
+            </div>
+        </div>
         <div id="containerDiv">
         	<div id="header">
                 <div id="title">
