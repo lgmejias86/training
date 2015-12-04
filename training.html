@@ -10,11 +10,11 @@
         <script>
             
             require([
-                "dojo/_base/declare", "dojo/parser", "dojo/ready",
+                "dojo/request", "dojo/_base/declare", "dojo/parser", "dojo/ready",
                 "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox"
-            ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
-            _WidgetsInTemplateMixin, dom, domConstruct, query, template){
+                "dijit/_WidgetsInTemplateMixin", "dojo/dom", "dojo/dom-construct", "dojo/query", "myApp/myJs/dialogWidget", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog"
+            ], function(request, declare, parser, ready, _WidgetBase, _TemplatedMixin,
+            _WidgetsInTemplateMixin, dom, domConstruct, query, DialogWidget, template){
 
                 declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
                     templateString: template,
@@ -43,10 +43,38 @@
                             }
                         }
                         if(val){
-                            var submit = confirm('Form is valid, press OK to submit');
-                            if(submit){
-                                f.submit();
-                            }
+                            var container = dom.byId("containerDiv");
+                                var inputs = query("form [name]");
+                                var attributes = ["firstName",
+                                                "lastName",
+                                                "company",
+                                                "address",
+                                                "city",
+                                                "state",
+                                                "country",
+                                                "email",
+                                                "phone",
+                                                "meal",
+                                                "cash",
+                                                "cheque",
+                                                "demand",
+                                                "noCheque",
+                                                "draw",
+                                                "payable"];
+                                var array = [];
+                                for (var i = 0; i < inputs.length; i++) {
+                                    if(i > 9 && i < 13){
+                                        if(inputs[i].checked){
+                                            array[i] = {attr: attributes[i], value: inputs[i].value};
+                                        }else{
+                                            array[i] = {attr: attributes[i], value: ""};
+                                        }
+                                    }else{
+                                        array[i] = {attr: attributes[i], value: inputs[i].value};
+                                    }
+                                };
+                                var dialogWidget = new DialogWidget(array).placeAt(container);
+                                dialogWidget.show();
                         }else{
                             var rojos = query("form label.required");
                             for (var i = 0; i < rojos.length; i++) {
@@ -94,7 +122,6 @@
                     </ul>
                 </div>
             </div>
-            
                 <span data-dojo-type="form"></span>
         </div>
  	</body>

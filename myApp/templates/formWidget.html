@@ -24,14 +24,14 @@
                 </div>
                 <div id="stateDiv" class="div">
                     <label for="state">State/Province/Región</label>
-                    <select id="state" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'state'">
-                        <option value="1" selected="selected">-Select-</option>
+                    <select id="state" name="states" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'state'">
+                        <option>-Select-</option>
                     </select>
                 </div> 
                 <div id="countryDiv" class="div">
                     <label for="country">Country</label>
-                    <select id="country" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'country'">
-                        <option value="1" selected="selected">-Select-</option>
+                    <select id="country" name="country" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'country'">
+                        <option>-Select-</option>
                     </select>
                 </div>
                 <div id="emailDiv" class="div">
@@ -48,8 +48,8 @@
                 <div id="mealDiv" class="div">
                     <label for="meal">Meal Preferences</label>
                     <select id="meal" name="meal" data-dojo-type="dijit/form/ComboBox">
-                        <option value="1" selected="selected">Vegetarian</option>
-                        <option value="2" selected="selected">Vegetarian2</option>
+                        <option>Vegetarian</option>
+                        <option>Vegetarian2</option>
                     </select>
                 </div>
             </fieldset>
@@ -58,16 +58,16 @@
                 <div id="paymentDiv" class="div">
                     <label for="payment">Payment Mode</label>
                     <div id="cashDiv" class="div checkDiv">
-                        <input type="checkbox" id="cash" data-dojo-type="dijit/form/CheckBox"/>
+                        <input type="checkbox" id="cash" name="cash" value="Cash" data-dojo-type="dijit/form/CheckBox"/>
                         <label for="cash">Cash</label>
                     </div>
                     <div id="chequeDiv" class="div checkDiv">
-                        <input type="checkbox" id="cheque" name="cheque" data-dojo-type="dijit/form/CheckBox"/>
+                        <input type="checkbox" id="cheque" name="cheque" value="Cheque" data-dojo-type="dijit/form/CheckBox"/>
                         <label for="cheque">Cheque</label>
                     </div>
                     <div id="demandDiv" class="div checkDiv">
-                        <input type="checkbox" id="demand" name="demand" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="demand">Demand Draf</label>
+                        <input type="checkbox" id="demand" name="demand" value="Demand Draft" data-dojo-type="dijit/form/CheckBox"/>
+                        <label for="demand">Demand Draft</label>
                     </div>
                 </div>
         </fieldset>
