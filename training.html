@@ -43,38 +43,46 @@
                             }
                         }
                         if(val){
-                            /*var container = dom.byId("containerDiv");
                                 var inputs = query("form [name]");
-                                var attributes = ["firstName",
-                                                "lastName",
-                                                "company",
-                                                "address",
-                                                "city",
-                                                "state",
-                                                "country",
-                                                "email",
-                                                "phone",
-                                                "meal",
-                                                "cash",
-                                                "cheque",
-                                                "demand",
-                                                "noCheque",
-                                                "draw",
-                                                "payable"];
-                                var array = [];
+                                var values = [];
+                                var cont = 0;
+                                var paymentMode = "";
                                 for (var i = 0; i < inputs.length; i++) {
                                     if(i > 9 && i < 13){
                                         if(inputs[i].checked){
-                                            array[i] = {attr: attributes[i], value: inputs[i].value};
+                                            if(paymentMode != "")
+                                                paymentMode +=", ";
+                                            paymentMode = paymentMode + inputs[i].value;
                                         }else{
-                                            array[i] = {attr: attributes[i], value: ""};
+                                            
+                                        }
+                                        if(i==12){
+                                            values[cont] = paymentMode;
+                                            cont++;
                                         }
                                     }else{
-                                        array[i] = {attr: attributes[i], value: inputs[i].value};
+                                        values[cont] = inputs[i].value;
+                                        cont++;
                                     }
                                 };
-                                var dialogWidget = new DialogWidget(array).placeAt(container);*/
-                                registry.byId("myConfirmDialog").show();
+                                var div = query("#content div")[0];
+                                domConstruct.destroy(div);
+                                var content = dom.byId("content");
+                                div = domConstruct.create("div",{innerHTML: ""}, content);
+                                var labels = query("form label");
+                                cont = 0;
+                                for (var i = 0; i < labels.length; i++) {
+                                    var label = labels[i].innerHTML;
+                                    if(label != "Cash" && label != "Cheque" && label != "Demand Draft"){
+
+                                        var ks =domConstruct.create("strong",{
+                                            innerHTML: label+":"}, div
+                                        );
+                                        var p = domConstruct.create("p",{innerHTML: values[cont]+".</br>"}, ks, "after");
+                                        cont++;
+                                    }
+                                };
+                            var dialog = registry.byId("myConfirmDialog").show();
                         }else{
                             var rojos = query("form label.required");
                             for (var i = 0; i < rojos.length; i++) {
@@ -112,11 +120,9 @@
     </head>
     <body class="claro">
         <div data-dojo-type="dijit/Dialog" id="myConfirmDialog" data-dojo-id="myConfirmDialog" title="Confirm Dialog" style="display: none">
-            <div class="dijitDialogPaneContentArea">
-                <strong>First Name:</strong> </br>
+            <div id="content" class="dijitDialogPaneContentArea">
                 
             </div>
-
             <div class="dijitDialogPaneActionBar">
                 <button data-dojo-type="dijit/form/Button" type="button">OK
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
