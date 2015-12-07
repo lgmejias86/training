@@ -12,7 +12,7 @@
             require([
                 "dojo/_base/declare", "dojo/parser", "dojo/ready",
                 "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog"
+                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
             ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
             _WidgetsInTemplateMixin, registry, dom, domConstruct, query, template){
 
@@ -53,8 +53,6 @@
                                             if(paymentMode != "")
                                                 paymentMode +=", ";
                                             paymentMode = paymentMode + inputs[i].value;
-                                        }else{
-                                            
                                         }
                                         if(i==12){
                                             values[cont] = paymentMode;
@@ -78,7 +76,9 @@
                                         var ks =domConstruct.create("strong",{
                                             innerHTML: label+":"}, div
                                         );
-                                        var p = domConstruct.create("p",{innerHTML: values[cont]+".</br>"}, ks, "after");
+                                        if(values[cont] == "")
+                                            values[cont] = " -"
+                                        var p = domConstruct.create("p",{innerHTML: values[cont]+"</br>"}, ks, "after");
                                         cont++;
                                     }
                                 };
@@ -126,8 +126,17 @@
             <div class="dijitDialogPaneActionBar">
                 <button data-dojo-type="dijit/form/Button" type="button">OK
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                        require(["dojo/dom", "dojo/dom-construct"], function(dom, domConstruct){
+                        require(["dojo/dom", "dojo/dom-construct", "dojo/query", "myApp/getValues"], function(dom, domConstruct, query, getValues){
                             myConfirmDialog.hide();
+                            
+                            var labels = query("#myConfirmDialog strong");
+                            values = getValues;
+                            var cont = 0;
+                            for (var i = 0; i < labels.length; i++) {
+                                var label = labels[i].innerHTML;
+                                console.log(label+" = "+values[i]);
+                            };
+
                             var form = dom.byId("myForm");
                             form.submit();
                         });
@@ -145,10 +154,12 @@
                 <div id="title">
                      <b>Workshop Registration</b>
                 </div>
-                <div id="actionsDiv">
-                    <ul id="actions"><span>More Actions</span>
-                        
-                    </ul>
+                <div id="actionsDiv" data-dojo-type="dijit/form/DropDownButton">
+                    <span>More Actions</span>
+                    <div data-dojo-type="dijit/DropDownMenu" id="submenu2">
+                        <div data-dojo-type="dijit/MenuItem">Inglish</div>
+                        <div data-dojo-type="dijit/MenuItem">Español</div>
+                    </div>
                 </div>
             </div>
                 <span data-dojo-type="form"></span>
