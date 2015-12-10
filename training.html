@@ -19,9 +19,13 @@
                 declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
                     templateString: template,
 
+                    cashValue: i18n.cashLabel,
+                    chequeValue: i18n.chequelabel,
+                    ddValue: i18n.demandlabel,
+
                     reset: function(){
                         var f = document.getElementById("myForm");
-                        return confirm('Press OK to reset widget values');
+                        return confirm(i18n.resetComfirmMassage);
                     },
 
                     valid: function(){
@@ -38,7 +42,7 @@
                            if(this.emailNode.isValid()&&this.phoneNode.isValid()){
                                 val = true;
                             }else{
-                                alert('Form contains invalid data.  Please correct first');
+                                alert(i18n.invalidConfirmMassage);
                                 return false;
                             }
                         }
@@ -71,7 +75,7 @@
                                 cont = 0;
                                 for (var i = 0; i < labels.length; i++) {
                                     var label = labels[i].innerHTML;
-                                    if(label != "Cash" && label != "Cheque" && label != "Demand Draft"){
+                                    if((label != i18n.cashLabel) && label != i18n.chequelabel && label != i18n.demandlabel){
 
                                         var ks =domConstruct.create("strong",{
                                             innerHTML: label+":"}, div
@@ -93,7 +97,7 @@
                                     }
                                 }, rojos[i]);
                             }
-                            alert('All the elements with the * in red are required');
+                            alert(i18n.requereMassage);
                             return false;
                         }
                         return true;
@@ -126,7 +130,6 @@
                         this.buttonSubmitLabel.set("label", i18n.buttonSubmitLabel);
                         this.buttonResetLabel.set("label", i18n.buttonResetLabel);
 
-
                         var legend = query("legend");
                         for (var i = 0; i < legend.length; i++) {
                             domConstruct.destroy(legend[i])
@@ -147,7 +150,7 @@
                 
             </div>
             <div class="dijitDialogPaneActionBar">
-                <button data-dojo-type="dijit/form/Button" type="button">OK
+                <button id="okButton" data-dojo-type="dijit/form/Button" type="button">
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         require(["dojo/dom", "dojo/dom-construct", "dojo/query", "myApp/getValues"], function(dom, domConstruct, query, getValues){
                             myConfirmDialog.hide();
@@ -165,12 +168,18 @@
                         });
                     </script>
                 </button>
-                <button data-dojo-type="dijit/form/Button" type="button">Cancel
+                <button id="cancelButton" data-dojo-type="dijit/form/Button" type="button">Cancel
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         myConfirmDialog.hide();
                     </script>
                 </button>
             </div>
+            <script>
+                require(["dojo/dom", "dojo/i18n! myApp/nls/formContent", "dojo/domReady!"], function(dom, i18n){
+                    dom.byId("okButton").innerHTML = i18n.okButton;
+                    dom.byId("cancelButton").innerHTML = i18n.cancelButton;
+                });
+            </script>
         </div>
         <div id="containerDiv">
         	<div id="header">

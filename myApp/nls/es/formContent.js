@@ -24,6 +24,14 @@ define(
 		demandlabel : "Giro a la Vista",
 
 		buttonSubmitLabel : "Enviar",
-		buttonResetLabel : "Resetear"
+		buttonResetLabel : "Resetear",
+
+		okButton: "Aceptar",
+		cancelButton: "Cancelar",
+
+		resetComfirmMassage : "Presione Aceptar para resetear los valores",
+		invalidConfirmMassage : "El formulario contiene datos no validos.  Por favor primero corrijalos",
+		requereMassage : "Todos los elementos con el * en rojo son necesarios"
+
 	}
 );

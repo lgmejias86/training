@@ -49,17 +49,6 @@ body{
 	padding-top:4px;
 }
 
-#actions{
-	top: 0;
-}
-
-#actions span{
-	font-size: .7em;
-	background:url("../img/u.gif") no-repeat scroll 90% center transparent;
-	display: block;
-	cursor: context-menu;
-}
-
 form {
 	height: 529px;
 	font-size: 0.8em;

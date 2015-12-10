@@ -24,7 +24,14 @@ define(
 		demandlabel : "Demand Draft",
 
 		buttonSubmitLabel : "Submit",
-		buttonResetLabel : "Reset"
+		buttonResetLabel : "Reset",
+
+		okButton: "Ok",
+		cancelButton: "Cancel",
+
+		resetComfirmMassage : "Press OK to reset values",
+		invalidConfirmMassage : "Form contains invalid data.  Please correct first",
+		requereMassage : "All the elements with the * in red are required"
 	}
 
 );
