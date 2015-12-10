@@ -1,52 +1,52 @@
 <div>
     <form data-dojo-type="dijit/form/Form" id="myForm" action="">
         <fieldset id="register" data-dojo-type="dijit/Fieldset">
-            <legend>Register now while seats are aviliable!</legend>
+            <em data-dojo-attach-point="registerLegend"></em>
                 <div id="firstNameDiv" class="div">
-                    <label for="firstName" class="required">First Name</label>
+                    <label for="firstName" class="required" data-dojo-attach-point="fNameLabel"></label>
                     <input id="firstName" name="firstName" data-dojo-type="dijit/form/TextBox"/>
                 </div>
                 <div id="lastNameDiv" class="div">
-                    <label id="a" for="lastName" class="required">Last Name</label>
+                    <label id="a" for="lastName" class="required" data-dojo-attach-point="lNameLabel"></label>
                     <input id="lastName" name="lastName" data-dojo-type="dijit/form/TextBox"/>
                 </div>
                 <div id="companyDiv" class="div">
-                    <label for="company" class="required">Company/Institution</label>
+                    <label for="company" class="required" data-dojo-attach-point="companyLabel"></label>
                     <input id="company" name="company" data-dojo-type="dijit/form/TextBox"/>
                 </div>
                 <div id="addressDiv" class="div" >
-                    <label for="address" class="required">Address</label>
+                    <label for="address" class="required" data-dojo-attach-point="addressLabel"></label>
                     <textarea id="address" name="address" data-dojo-type="dijit/form/Textarea"></textarea>
                 </div>
                 <div id="cityDiv" class="div">
-                    <label for="city">City</label>
+                    <label for="city" data-dojo-attach-point="cityLabel"></label>
                     <input id="city" name="city" data-dojo-type="dijit/form/TextBox"/>
                 </div>
                 <div id="stateDiv" class="div">
-                    <label for="state">State/Province/Región</label>
+                    <label for="state" data-dojo-attach-point="stateLabel"></label>
                     <select id="state" name="states" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'state'">
                         <option>-Select-</option>
                     </select>
                 </div> 
                 <div id="countryDiv" class="div">
-                    <label for="country">Country</label>
+                    <label for="country" data-dojo-attach-point="countryLabel"></label>
                     <select id="country" name="country" data-dojo-type="dijit/form/ComboBox"  data-dojo-props="id:'country'">
                         <option>-Select-</option>
                     </select>
                 </div>
                 <div id="emailDiv" class="div">
-                    <label for="email"  class="required">Email</label>
+                    <label for="email"  class="required" data-dojo-attach-point="emailLabel"></label>
                     <input id="email" name="email" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="emailNode" data-dojo-props="validator:dojox.validate.isEmailAddress, invalidMessage:'This is not a valid email!'"/>
                 </div>
                 <div id="phoneDiv" class="div">
-                    <label for="phone" class="required">Phone Number</label>
+                    <label for="phone" class="required" data-dojo-attach-point="phoneLabel"></label>
                     <input id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="phoneNode" data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
                 </div>
         </fieldset>
         <fieldset id="lunch" data-dojo-type="dijit/Fieldset">
-            <legend>Lunch</legend>
+            <em data-dojo-attach-point="lunchLegend"></em>
                 <div id="mealDiv" class="div">
-                    <label for="meal">Meal Preferences</label>
+                    <label for="meal" data-dojo-attach-point="mealLabel"></label>
                     <select id="meal" name="meal" data-dojo-type="dijit/form/ComboBox">
                         <option>Vegetarian</option>
                         <option>Vegetarian2</option>
@@ -54,41 +54,41 @@
                 </div>
             </fieldset>
         <fieldset id="payment" data-dojo-type="dijit/Fieldset">
-            <legend>Payment Details</legend>
+            <em data-dojo-attach-point="paymentLegend"></em>
                 <div id="paymentDiv" class="div">
-                    <label for="payment">Payment Mode</label>
+                    <label for="payment" data-dojo-attach-point="paymentLabel"></label>
                     <div id="cashDiv" class="div checkDiv">
                         <input type="checkbox" id="cash" name="cash" value="Cash" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="cash">Cash</label>
+                        <label for="cash" data-dojo-attach-point="cashLabel"></label>
                     </div>
                     <div id="chequeDiv" class="div checkDiv">
                         <input type="checkbox" id="cheque" name="cheque" value="Cheque" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="cheque">Cheque</label>
+                        <label for="cheque" data-dojo-attach-point="chequelabel"></label>
                     </div>
                     <div id="demandDiv" class="div checkDiv">
                         <input type="checkbox" id="demand" name="demand" value="Demand Draft" data-dojo-type="dijit/form/CheckBox"/>
-                        <label for="demand">Demand Draft</label>
+                        <label for="demand" data-dojo-attach-point="demandlabel"></label>
                     </div>
                 </div>
         </fieldset>
         <fieldset id="othersfields" data-dojo-type="dijit/Fieldset">
             <div id="chequenoDiv" class="div">
-                <label for="chequeno">DD/Cheque No.</label>
+                <label for="chequeno" data-dojo-attach-point="chequenoLabel"></label>
                 <input type="text" id="chequeno" name="chequeno" data-dojo-type="dijit/form/TextBox"/>
             </div>
             <div id="drawnDiv" class="div">
-                <label for="drawn">Drawn on (Bank Name)</label>
+                <label for="drawn" data-dojo-attach-point="drawnLabel"></label>
                 <input type="text" id="drawn" name="drawn" data-dojo-type="dijit/form/TextBox"/>
             </div>
             <div id="payableDiv" class="div">
-                <label for="payable">Payable at</label>
+                <label for="payable" data-dojo-attach-point="payableLabel"></label>
                 <input type="text" id="payable" name="payable" data-dojo-type="dijit/form/TextBox"/>
             </div>
         </fieldset>
         <fieldset id="bottom" data-dojo-type="dijit/Fieldset">
             <div id="bottomDiv" class="div">
-                <button id="submit" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'button'" data-dojo-attach-event="onClick: valid">Submit</button>
-                <button id="reset" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'reset'" data-dojo-attach-event="onClick: reset">Reset</button>
+                <button id="submit" data-dojo-attach-point="buttonSubmitLabel" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'button'" data-dojo-attach-event="onClick: valid"></button>
+                <button id="reset" data-dojo-attach-point="buttonResetLabel" data-dojo-type="dijit/form/Button" data-dojo-props="type: 'reset'" data-dojo-attach-event="onClick: reset"></button>
             </div>
         </fieldset>
      </form>

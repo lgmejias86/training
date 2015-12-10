@@ -5,16 +5,16 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/css.css">
         <link rel="stylesheet" href="dijit/themes/claro/claro.css">
-        <script>dojoConfig = {parseOnLoad: true, async: true}</script>
+        <script>dojoConfig = {parseOnLoad: true, async: true, locale: location.search.substring(1)===""?"en-us":location.search.substring(1)}</script>
         <script src="dojo/dojo.js"></script>
         <script>
             
             require([
                 "dojo/_base/declare", "dojo/parser", "dojo/ready",
                 "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
+                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/i18n! myApp/nls/formContent", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
             ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
-            _WidgetsInTemplateMixin, registry, dom, domConstruct, query, template){
+            _WidgetsInTemplateMixin, registry, dom, domConstruct, query, i18n, template){
 
                 declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
                     templateString: template,
@@ -100,20 +100,43 @@
                     },
 
                     postCreate: function(){
-                        
-                        var legendspan = query("legend .dijitInline.dijitArrowNode");
-                        var legend1 = query("#othersfields legend")[0];
-                        var legend2 = query("#bottom legend")[0];
-                        domConstruct.destroy(legend1);
-                        domConstruct.destroy(legend2);
-                        for (var i = 0; i < legendspan.length; i++) {
-                            domConstruct.destroy(legendspan[i])
+                        this.fNameLabel.innerHTML = i18n.fNameLabel;
+                        this.lNameLabel.innerHTML = i18n.lNameLabel;
+                        this.companyLabel.innerHTML = i18n.companyLabel;
+                        this.addressLabel.innerHTML = i18n.addressLabel;
+                        this.cityLabel.innerHTML = i18n.cityLabel;
+                        this.stateLabel.innerHTML = i18n.stateLabel;
+                        this.countryLabel.innerHTML = i18n.countryLabel;
+                        this.emailLabel.innerHTML = i18n.emailLabel;
+                        this.phoneLabel.innerHTML = i18n.phoneLabel;
+                        this.mealLabel.innerHTML = i18n.mealLabel;
+                        this.paymentLabel.innerHTML = i18n.paymentLabel;
+                        this.chequenoLabel.innerHTML = i18n.chequenoLabel;
+                        this.drawnLabel.innerHTML = i18n.drawnLabel;
+                        this.payableLabel.innerHTML = i18n.payableLabel;
+
+                        this.registerLegend.innerHTML = i18n.registerLegend;
+                        this.lunchLegend.innerHTML = i18n.lunchLegend;
+                        this.paymentLegend.innerHTML = i18n.paymentLegend;
+
+                        this.cashLabel.innerHTML = i18n.cashLabel;
+                        this.chequelabel.innerHTML = i18n.chequelabel;
+                        this.demandlabel.innerHTML = i18n.demandlabel;
+
+                        this.buttonSubmitLabel.set("label", i18n.buttonSubmitLabel);
+                        this.buttonResetLabel.set("label", i18n.buttonResetLabel);
+
+
+                        var legend = query("legend");
+                        for (var i = 0; i < legend.length; i++) {
+                            domConstruct.destroy(legend[i])
                         };
                     }
                     
                 });
                 ready(function(){
                     parser.parse();
+
                 });
             });
         </script>
@@ -157,8 +180,22 @@
                 <div id="actionsDiv" data-dojo-type="dijit/form/DropDownButton">
                     <span>More Actions</span>
                     <div data-dojo-type="dijit/DropDownMenu" id="submenu2">
-                        <div data-dojo-type="dijit/MenuItem">Inglish</div>
-                        <div data-dojo-type="dijit/MenuItem">Español</div>
+                        <div data-dojo-type="dijit/MenuItem">Inglish en-us
+                            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                                require(["dojo/_base/config"], function(config){
+                                    if(config.locale != "en-us")
+                                        window.location.href = "?en-us";
+                                });
+                            </script>
+                        </div>
+                        <div data-dojo-type="dijit/MenuItem">Español es
+                            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                                require(["dojo/_base/config"], function(config){
+                                    if(config.locale != "es")
+                                        window.location.href = "?es";
+                                });
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>

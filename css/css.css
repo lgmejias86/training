@@ -45,6 +45,8 @@ body{
 
 	border-radius: 0;
 	box-shadow: none;
+
+	padding-top:4px;
 }
 
 #actions{
@@ -70,9 +72,11 @@ fieldset{
 	border-radius: 0;
 }
 
-legend{
+em{
 	height: 15px;
 	text-decoration: underline;
+	font-style: normal;
+	font-size: 1.1em;
 }
 
 #register{
@@ -141,11 +145,11 @@ p{
 	padding-left: 20px; 
 }
 
-#lunch legend{
+#lunch{
 	padding-top: 40px;
 }
 
-#payment legend{
+#payment{
 	padding-top: 20px;
 }
 
@@ -164,10 +168,6 @@ p{
 	background-color: rgb(228, 228, 228);
 	height: 39px;
 	margin: 1px;
-}
-
-#bottom legend{
-	font-size: 0;
 }
 
 #bottomDiv{
