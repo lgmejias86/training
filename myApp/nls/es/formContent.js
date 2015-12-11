@@ -29,9 +29,11 @@ define(
 		okButton: "Aceptar",
 		cancelButton: "Cancelar",
 
-		resetComfirmMassage : "Presione Aceptar para resetear los valores",
-		invalidConfirmMassage : "El formulario contiene datos no validos.  Por favor primero corrijalos",
-		requereMassage : "Todos los elementos con el * en rojo son necesarios"
+		resetComfirmMessage : "Presione Aceptar para resetear los valores",
+		invalidConfirmMessage : "El formulario contiene datos no validos.  Por favor primero corrijalos",
+		requereMessage : "Todos los elementos con el * en rojo son necesarios",
 
+		invalidMessageEmail: "Este no es un correo electronico valido!",
+		invalidMessagePhone: "No deje espacios en blanco"
 	}
 );

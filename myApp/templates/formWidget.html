@@ -36,11 +36,11 @@
                 </div>
                 <div id="emailDiv" class="div">
                     <label for="email"  class="required" data-dojo-attach-point="emailLabel"></label>
-                    <input id="email" name="email" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="emailNode" data-dojo-props="validator:dojox.validate.isEmailAddress, invalidMessage:'This is not a valid email!'"/>
+                    <input id="email" name="email" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="emailNode" data-dojo-props="validator:dojox.validate.isEmailAddress"/>
                 </div>
                 <div id="phoneDiv" class="div">
                     <label for="phone" class="required" data-dojo-attach-point="phoneLabel"></label>
-                    <input id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="phoneNode" data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'"/>
+                    <input id="phone" name="phone" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-attach-point="phoneNode" data-dojo-props="regExp:'[\\w]+'"/>
                 </div>
         </fieldset>
         <fieldset id="lunch" data-dojo-type="dijit/Fieldset">
@@ -58,15 +58,15 @@
                 <div id="paymentDiv" class="div">
                     <label for="payment" data-dojo-attach-point="paymentLabel"></label>
                     <div id="cashDiv" class="div checkDiv">
-                        <input type="checkbox" id="cash" name="cash" value=${cashValue} data-dojo-type="dijit/form/CheckBox"/>
+                        <input type="checkbox" id="cash" name="cash" value=${cashValue} data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange: cashChequed" data-dojo-attach-point="cashNode"/>
                         <label for="cash" data-dojo-attach-point="cashLabel"></label>
                     </div>
                     <div id="chequeDiv" class="div checkDiv">
-                        <input type="checkbox" id="cheque" name="cheque" value=${chequeValue} data-dojo-type="dijit/form/CheckBox"/>
+                        <input type="checkbox" id="cheque" name="cheque" value=${chequeValue} data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange: chequeChequed" data-dojo-attach-point="chequeNode"/>
                         <label for="cheque" data-dojo-attach-point="chequelabel"></label>
                     </div>
                     <div id="demandDiv" class="div checkDiv">
-                        <input type="checkbox" id="demand" name="demand" value=${ddValue} data-dojo-type="dijit/form/CheckBox"/>
+                        <input type="checkbox" id="demand" name="demand" value=${ddValue} data-dojo-type="dijit/form/CheckBox" data-dojo-attach-event="onChange: demandChequed" data-dojo-attach-point="demandNode"/>
                         <label for="demand" data-dojo-attach-point="demandlabel"></label>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             </div>
             <div id="payableDiv" class="div">
                 <label for="payable" data-dojo-attach-point="payableLabel"></label>
-                <input type="text" id="payable" name="payable" data-dojo-type="dijit/form/TextBox"/>
+                <input type="text" id="payable" name="payable" data-dojo-type="dijit/form/DateTextBox" data-dojo-attach-point="payable"/>
             </div>
         </fieldset>
         <fieldset id="bottom" data-dojo-type="dijit/Fieldset">

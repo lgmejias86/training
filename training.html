@@ -12,7 +12,7 @@
             require([
                 "dojo/_base/declare", "dojo/parser", "dojo/ready",
                 "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/i18n! myApp/nls/formContent", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
+                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/i18n! myApp/nls/formContent", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/form/DateTextBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
             ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
             _WidgetsInTemplateMixin, registry, dom, domConstruct, query, i18n, template){
 
@@ -25,7 +25,7 @@
 
                     reset: function(){
                         var f = document.getElementById("myForm");
-                        return confirm(i18n.resetComfirmMassage);
+                        return confirm(i18n.resetComfirmMessage);
                     },
 
                     valid: function(){
@@ -42,7 +42,7 @@
                            if(this.emailNode.isValid()&&this.phoneNode.isValid()){
                                 val = true;
                             }else{
-                                alert(i18n.invalidConfirmMassage);
+                                alert(i18n.invalidConfirmMessage);
                                 return false;
                             }
                         }
@@ -54,8 +54,6 @@
                                 for (var i = 0; i < inputs.length; i++) {
                                     if(i > 9 && i < 13){
                                         if(inputs[i].checked){
-                                            if(paymentMode != "")
-                                                paymentMode +=", ";
                                             paymentMode = paymentMode + inputs[i].value;
                                         }
                                         if(i==12){
@@ -80,9 +78,9 @@
                                         var ks =domConstruct.create("strong",{
                                             innerHTML: label+":"}, div
                                         );
-                                        if(values[cont] == "")
-                                            values[cont] = " -"
-                                        var p = domConstruct.create("p",{innerHTML: values[cont]+"</br>"}, ks, "after");
+                                        /*if(values[cont] == "")
+                                            values[cont] = " -"*/
+                                        var p = domConstruct.create("p",{innerHTML: values[cont]+"<br>"}, ks, "after");
                                         cont++;
                                     }
                                 };
@@ -101,6 +99,27 @@
                             return false;
                         }
                         return true;
+                    },
+
+                    cashChequed: function(){
+                        if(this.cashNode.checked){
+                            this.chequeNode.set("checked", false);
+                            this.demandNode.set("checked", false);
+                        }
+                    },
+
+                    chequeChequed: function(){
+                        if(this.chequeNode.checked){
+                            this.cashNode.set("checked", false);
+                            this.demandNode.set("checked", false);
+                        }
+                    },
+
+                    demandChequed: function(){
+                        if(this.demandNode.checked){
+                            this.cashNode.set("checked", false);
+                            this.chequeNode.set("checked", false);
+                        }
                     },
 
                     postCreate: function(){
@@ -129,6 +148,9 @@
 
                         this.buttonSubmitLabel.set("label", i18n.buttonSubmitLabel);
                         this.buttonResetLabel.set("label", i18n.buttonResetLabel);
+
+                        this.emailNode.set("invalidMessage",i18n.invalidMessageEmail);
+                        this.phoneNode.set("invalidMessage",i18n.invalidMessagePhone);
 
                         var legend = query("legend");
                         for (var i = 0; i < legend.length; i++) {
@@ -168,7 +190,7 @@
                         });
                     </script>
                 </button>
-                <button id="cancelButton" data-dojo-type="dijit/form/Button" type="button">Cancel
+                <button id="cancelButton" data-dojo-type="dijit/form/Button" type="button">
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         myConfirmDialog.hide();
                     </script>
@@ -176,8 +198,10 @@
             </div>
             <script>
                 require(["dojo/dom", "dojo/i18n! myApp/nls/formContent", "dojo/domReady!"], function(dom, i18n){
-                    dom.byId("okButton").innerHTML = i18n.okButton;
-                    dom.byId("cancelButton").innerHTML = i18n.cancelButton;
+                    var okButton = dom.byId("okButton");
+                    var cancelButton = dom.byId("cancelButton");
+                    okButton.innerHTML = i18n.okButton + okButton.innerHTML;
+                    cancelButton.innerHTML = i18n.cancelButton + cancelButton.innerHTML;
                 });
             </script>
         </div>

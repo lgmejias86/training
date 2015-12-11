@@ -30,9 +30,12 @@ define({ root:
 		okButton: "Ok",
 		cancelButton: "Cancel",
 
-		resetComfirmMassage : "Press OK to reset values",
-		invalidConfirmMassage : "Form contains invalid data.  Please correct first",
-		requereMassage : "All the elements with the * in red are required"
+		resetComfirmMessage : "Press OK to reset values",
+		invalidConfirmMessage : "Form contains invalid data.  Please correct first",
+		requereMessage : "All the elements with the * in red are required",
+
+		invalidMessageEmail: "This is not a valid email!",
+		invalidMessagePhone: "Invalid Non-Space Text."
 	}),
 "es": true,
 "en-us": true
