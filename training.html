@@ -23,6 +23,11 @@
                     chequeValue: i18n.chequelabel,
                     ddValue: i18n.demandlabel,
 
+                    vegetarian: i18n.mealVegetarian,
+                    muslim: i18n.mealMuslim,
+                    kosher: i18n.mealKosher,
+                    japanese: i18n.mealJapanese,
+
                     reset: function(){
                         var f = document.getElementById("myForm");
                         return confirm(i18n.resetComfirmMessage);
@@ -39,7 +44,7 @@
                         if(f.email.value ==""||f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
                             val = false;
                         }else{
-                           if(this.emailNode.isValid()&&this.phoneNode.isValid()){
+                           if(this.emailNode.isValid()&&this.phoneNode.isValid()&&this.payable.isValid()){
                                 val = true;
                             }else{
                                 alert(i18n.invalidConfirmMessage);
@@ -78,8 +83,6 @@
                                         var ks =domConstruct.create("strong",{
                                             innerHTML: label+":"}, div
                                         );
-                                        /*if(values[cont] == "")
-                                            values[cont] = " -"*/
                                         var p = domConstruct.create("p",{innerHTML: values[cont]+"<br>"}, ks, "after");
                                         cont++;
                                     }

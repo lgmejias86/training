@@ -35,7 +35,12 @@ define({ root:
 		requereMessage : "All the elements with the * in red are required",
 
 		invalidMessageEmail: "This is not a valid email!",
-		invalidMessagePhone: "Invalid Non-Space Text."
+		invalidMessagePhone: "Invalid Non-Space Text.",
+
+		mealVegetarian: "Vegetarian",
+		mealMuslim: "Muslim",
+		mealKosher: "Kosher",
+		mealJapanese: "Japanese"
 	}),
 "es": true,
 "en-us": true

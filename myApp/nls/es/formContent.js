@@ -24,7 +24,7 @@ define(
 		demandlabel : "Giro a la Vista",
 
 		buttonSubmitLabel : "Enviar",
-		buttonResetLabel : "Resetear",
+		buttonResetLabel : "Borrar",
 
 		okButton: "Aceptar",
 		cancelButton: "Cancelar",
@@ -34,6 +34,11 @@ define(
 		requereMessage : "Todos los elementos con el * en rojo son necesarios",
 
 		invalidMessageEmail: "Este no es un correo electronico valido!",
-		invalidMessagePhone: "No deje espacios en blanco"
+		invalidMessagePhone: "No deje espacios en blanco",
+
+		mealVegetarian: "Vegetariano",
+		mealMuslim: "Musulmán",
+		mealKosher: "Kósher",
+		mealJapanese: "Japonés"
 	}
 );
