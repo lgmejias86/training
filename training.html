@@ -7,108 +7,166 @@
     </head>
     
     <body>
-        <div id="header">
-            <div id="title">
-                <b>Workshop Registration</b>
+        <div id="containerDiv">
+            <div id="header">
+                <div id="title">
+                    <b>Workshop Registration</b>
+                </div>
+                <div id="actionsDiv">
+                    <ul id="actions">
+                        <span>More Actions</span>
+                    </ul>
+                </div>
             </div>
-            <div id="actionsDiv">
-                <ul id="actions">
-                    <span>More Actions</span>
-                </ul>
-            </div>
+            <form action="action">
+                <fieldset id="register">
+                    <legend>Register now while seats are aviliable!</legend>
+                    <div id="firstNameDiv" class="div">
+                        <div class="label">
+                            <label for="firstName">First Name<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="firstName" name="firsName" required/>
+                        </div>
+                    </div>
+                    <div id="lastNameDiv" class="div">
+                        <div class="label">
+                            <label for="lastName">Last Name<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="lastName" name="lastName" required/>
+                        </div>
+                    </div>
+                    <div id="companyDiv" class="div">
+                        <div class="label">
+                            <label for="company">Company/Institution<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="company" name="company" required/>
+                        </div>
+                    </div>
+                    <div id="addressDiv" class="div">
+                        <div class="label">
+                            <label for="address">Address<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                             <textarea row="65" id="address" name="address" required></textarea>
+                        </div>
+                    </div>
+                    <div id="cityDiv" class="div">
+                        <div class="label">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="city" name="city" />
+                        </div>
+                    </div>
+                    <div id="stateDiv" class="div">
+                        <div class="label">
+                            <label for="state">State/Province/Región</label>
+                        </div>
+                        <div class="labelDiv">
+                            <select id="state">
+                                <option>-Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="countryDiv" class="div">
+                        <div class="label">
+                            <label for="country">Country</label>
+                        </div>
+                        <div class="labelDiv">
+                            <select id="country">
+                                <option>-Select-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="emailDiv" class="div">
+                        <div class="label">
+                            <label for="email">Email<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="email" id="email" name="email" required/>
+                        </div>
+                    </div>
+                    <div id="phoneDiv" class="div">
+                        <div class="label">
+                            <label for="phone">Phone Number<p>*</p></label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="tel" id="phone" name="phone" required/>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="lunch">
+                    <legend>Lunch</legend>
+                    <div id="mealDiv" class="div">
+                        <div class="label">
+                            <label for="meal">Meal Preferences</label>
+                        </div>
+                        <div class="labelDiv">
+                            <select id="meal" name="meal">
+                                <option value="1">Vegetarian</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset id="payment">
+                    <legend>Payment Details</legend>
+                        <div id="paymentDiv" class="div">
+                            <div class="label">
+                                <label for="payment">Payment Mode</label>
+                            </div>
+                            <div class="labelDiv">
+                                <div id="cashDiv" class="div checkDiv">
+                                    <input type="checkbox" id="cash" />
+                                    <label for="cash">Cash</label>
+                                </div>
+                                <div id="chequeDiv" class="div checkDiv">
+                                    <input type="checkbox" id="cheque" name="cheque" />
+                                    <label for="cheque">Cheque</label>
+                                </div>
+                                <div id="demandDiv" class="div checkDiv">
+                                    <input type="checkbox" id="demand" name="demand" />
+                                    <label for="demand">Demand Draf</label>
+                                </div>
+                            </div>
+                    </div>
+                </fieldset>
+                <fieldset id="othersfields">
+                    <div id="chequenoDiv" class="div">
+                        <div class="label">
+                            <label for="chequeno">DD/Cheque No.</label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="chequeno" name="chequeno"></input>
+                        </div>
+                    </div>
+                    <div id="drawnDiv" class="div">
+                        <div class="label">
+                            <label for="drawn">Drawn On (Bank Name)</label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="drawn" name="drawn"></input>
+                        </div>
+                    </div>
+                    <div id="payableDiv" class="div">
+                        <div class="label">
+                            <label for="payable">Payable at</label>
+                        </div>
+                        <div class="labelDiv">
+                            <input type="text" id="payable" name="payable"></input>
+                        </div>
+                    </div>
+                </fieldset>
+                <div id="bottom">
+                    <div id="bottomDiv">
+                        <input id="submit" type="submit" value="Submit"></input>
+                        <input id="reset" type="reset" value="Reset"></input>
+                    </div>
+                </div>
+            </form>
         </div>
-        <form action="action">
-            <fieldset id="register">
-                <legend>Register now while seats are aviliable!</legend>
-                <div id="firstNameDiv">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firsName" required/>
-                </div>
-                <div id="lastNameDiv">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required/>
-                </div>
-                <div id="companyDiv">
-                    <label for="company">Company/Institution</label>
-                    <input type="text" id="company" name="company" required/>
-                </div>
-                <div id="addressDiv">
-                    <label for="address">Address</label>
-                    <textarea row="65" id="address" name="address" required></textarea>
-                </div>
-                <div id="cityDiv">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" />
-                </div>
-                <div id="stateDiv">
-                    <label for="state">State/Province/Región</label>
-                    <select id="state">
-                        <option>-Select</option>
-                    </select>
-                </div>
-                <div id="countryDiv">
-                    <label for="country">Country</label>
-                    <select id="country">
-                        <option>-Select-</option>
-                    </select>
-                </div>
-                <div id="emailDiv">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required/>
-                </div>
-                <div id="phoneDiv">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required/>
-                </div>
-            </fieldset>
-            <fieldset id="lunch">
-                <legend>Lunch</legend>
-                <div id="mealDiv">
-                    <label for="meal">Meal Preferences</label>
-                    <select id="meal" name="meal">
-                        <option value="1">Vegetarian</option>
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset id="payment">
-                <legend>Payment Details</legend>
-                <div id="paymentDiv">
-                    <label for="payment">Payment Mode</label>
-                    <div id="cashDiv">
-                        <input type="checkbox" id="cash" />
-                        <label for="cash">Cash</label>
-                    </div>
-                    <div id="chequeDiv">
-                        <input type="checkbox" id="cheque" name="cheque" />
-                        <label for="cheque">Cheque</label>
-                    </div>
-                    <div id="demandDiv">
-                        <input type="checkbox" id="demand" name="demand" />
-                        <label for="demand">Demand Draf</label>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset id="othersfields">
-                <div id="chequenoDiv">
-                    <label for="chequeno">DD/Cheque No.</label>
-                    <input type="text" id="chequeno" name="chequeno"></input>
-                </div>
-                <div id="drawnDiv">
-                    <label for="drawn">Drawn on (Bank Name)</label>
-                    <input type="text" id="drawn" name="drawn"></input>
-                </div>
-                <div id="payableDiv">
-                    <label for="payable">Payable at</label>
-                    <input type="text" id="payable" name="payable"></input>
-                </div>
-            </fieldset>
-            <fieldset id="bottom">
-                <div id="bottomDiv">
-                    <input id="submit" type="submit" value="Submit"></input>
-                    <input id="reset" type="reset" value="Reset"></input>
-                </div>
-            </fieldset>
-        </form>
     </body>
 
 </html>

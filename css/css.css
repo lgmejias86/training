@@ -6,16 +6,16 @@
 body{
 	font-size: 0.9em;
 	font-family: Arial;
+	padding: 10px 0;
+}
+
+#containerDiv{
 	border-style: solid;
 	border-width: 1px;
-	position: absolute;
-	height: 570px;
 	width: 870px;
-	left: 50%;
-	top: 50%;
-	margin-top: -285px;
-	margin-left: -435px;
 	border-color: rgb(130, 175, 165);
+	height: auto;
+	margin: auto;
 }
 
 #header{
@@ -30,14 +30,11 @@ body{
 	float: left;
 	height: 30px;
 	width: 200px;
-	
 }
 
 #actionsDiv{
-	position: absolute;
-	height: 300px;
-	width: 90px;
-	left: 230px;
+	float: left;
+	width: 100px;
 }
 
 #actions{
@@ -45,20 +42,16 @@ body{
 }
 
 #actions span{
-	font-size: .7em;
+	font-size: .8em;
 	background:url("../img/u.gif") no-repeat scroll 90% center transparent;
 	display: block;
 	cursor: context-menu;
-}
-
-form {
-	height: 529px;
-	font-size: 0.8em;
-	
+	line-height: 30px;
 }
 
 fieldset{
 	border-width: 0;
+	float: left;
 }
 
 legend{
@@ -67,114 +60,101 @@ legend{
 }
 
 #register{
-	float: left;
-	margin: 20px 10px;
+	margin: 20px 40px 20px 10px;
 	padding: 0;
-	width: 415px;
-	height: 450px;
 }
 
-form div{
-	position: relative;
-	margin-top: 10px;
+.div{
+	margin-top: 20px;
+	overflow: auto;
 }
 
-#register div, #lunch div, #othersfields div{
-	height: 35px;
+fieldset .div{
+	width: 400px;
+	height: auto;
+	display: table;
+}
+
+.label{
+	display: table-cell;
+    vertical-align: middle;
 }
 
 #register input, #lunch input, #othersfields input, textarea, select{
-	position: absolute;
-	height: 20px;
-	
-	top: 50%;
-	margin-top: -10px;
-	
-	margin-left: 200px;
+	float: right;
 	width: 180px;
-	
 }
 
 textarea{
-	height: 100%;
-	top: 0;
-	margin-top: 0;
+	height: 100px;
 }
 
 label{
-	position: absolute;
-	height: 20px;
-	top: 50%;
-	margin-top: -10px;
-	line-height: 20px;
 	font-weight: bold;
+	float: left;
 }
 
-#register #addressDiv{
-	height: 65px;
+.div p{
+	color: red;
+	display: inline-block;
 }
 
-#lunch, #payment, #othersfields{
-	width: 415px;
-	padding-left: 20px; 
+#lunch{
+	margin-top: 40px;
 }
 
-#lunch legend{
-	padding-top: 40px;
+#payment{
+	margin-top: 25px;
 }
 
-#payment legend{
-	padding-top: 20px;
+#paymentDiv{
+	margin-top: 5px;
 }
 
-#paymentDiv div{
-	margin: 10px 0;
-	height: 15px;
+#paymentDiv .div{
+	margin-top: 10px;
+	width: 180px !important;
+	float: right;
 }
 
+#paymentDiv .label{
+	width: 150px;
+}
 
-#paymentDiv div label{
+#paymentDiv .div label{
 	font-weight: normal;
+	line-height: 16px;
+	float: none;
+	font-size: 0.8em;
 }
 
-#payment input{
-	margin-left: 200px;
-	margin-right: 5px;
-	height: 15px;
+#paymentDiv input{
+	float: left;
+	height: 16px;
+	width: 16px;
 }
 
 #bottom{
 	clear: both;
 	background-color: rgb(228, 228, 228);
-	height: 39px;
 	margin: 1px;
+	text-align: center;
 }
 
 #bottomDiv{
-	margin: 0;
-	height: 100%;
+	display: inline-block;
+	padding: 5px 5px 4px;
+	margin: 2px;
 }
 
 #bottom input{
-	position: absolute;
 	background-color: rgb(125, 193, 176);
 	border-width: 1px;
 	border-style: solid;
 	border-color: rgb(130, 175, 165);
-	height: 25px;
 	width: 100px;
-	top: 50%;
-	margin-top: -10px;
-	font-size:1.5em;
+	font-weight: bold;
+	font-size:1.1em;
 	color: white;
-
-}
-
-#submit{
-	margin-left: 333px;
-	vertical-align: middle;
-}
-
-#reset{
-	margin-left: 437px;
+	padding: 2px;
 }
