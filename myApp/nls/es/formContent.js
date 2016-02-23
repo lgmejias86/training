@@ -16,6 +16,7 @@ define(
 		payableLabel: "Pagar el",
 
 		registerLegend: "Regístrese ahora mientras los asientos están disponibles!",
+		registerConfirmLegend : "Confirme los datos!",
 		lunchLegend: "Almuerzo",
 		paymentLegend: "Detalles de Pago",
 
@@ -29,9 +30,8 @@ define(
 		okButton: "Aceptar",
 		cancelButton: "Cancelar",
 
-		resetComfirmMessage : "Presione Aceptar para resetear los valores",
-		invalidConfirmMessage : "El formulario contiene datos no validos.  Por favor primero corrijalos",
 		requereMessage : "Todos los elementos con el * en rojo son necesarios",
+		invalidConfirmMessage : "El formulario contiene datos no validos.  Por favor primero corrijalos",
 
 		invalidMessageEmail: "Este no es un correo electronico valido!",
 		invalidMessagePhone: "No deje espacios en blanco",

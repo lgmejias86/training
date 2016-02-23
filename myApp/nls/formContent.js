@@ -13,10 +13,11 @@ define({ root:
 		mealLabel: "Meal Preferences",
 		paymentLabel: "Payment Mode",
 		chequenoLabel: "DD/Cheque No.",
-		drawnLabel: "Drawn on (Bank Name)",
+		drawnLabel: "Drawn On (Bank Name)",
 		payableLabel: "Payable at",
 
 		registerLegend: "Register now while seats are aviliable!",
+		registerConfirmLegend : "Confirm data!",
 		lunchLegend: "Lunch",
 		paymentLegend: "Payment Details",
 
@@ -30,7 +31,6 @@ define({ root:
 		okButton: "Ok",
 		cancelButton: "Cancel",
 
-		resetComfirmMessage : "Press OK to reset values",
 		invalidConfirmMessage : "Form contains invalid data.  Please correct first",
 		requereMessage : "All the elements with the * in red are required",
 

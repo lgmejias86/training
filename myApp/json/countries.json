@@ -1,0 +1,14 @@
+{
+  "identifier":"id",
+  "label": "name",
+  "items": [
+  	{ "id": "US", "name":"United States of America"},
+  	{ "id": "CA", "name":"Canada"},
+  	{ "id": "DE", "name":"Germany"},
+	{ "id": "FR", "name":"France"},
+	{ "id": "ES", "name":"Spain"},
+	{ "id": "IT", "name":"Italy"},
+	{ "id": "BR", "name":"Brazil"},
+	{ "id": "AR", "name":"Argentina"}
+  ]
+}

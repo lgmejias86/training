@@ -8,235 +8,45 @@
         <script>dojoConfig = {parseOnLoad: true, async: true, locale: location.search.substring(1)===""?"en-us":location.search.substring(1)}</script>
         <script src="dojo/dojo.js"></script>
         <script>
-            
-            require([
-                "dojo/_base/declare", "dojo/parser", "dojo/ready",
-                "dijit/_WidgetBase", "dijit/_TemplatedMixin",
-                "dijit/_WidgetsInTemplateMixin", "dijit/registry", "dojo/dom", "dojo/dom-construct", "dojo/query", "dojo/i18n! myApp/nls/formContent", "dojo/text! myApp/templates/formWidget.html", "dijit/Fieldset", "dijit/form/Form", "dijit/form/TextBox",  "dijit/form/Textarea", "dijit/form/ComboBox", "dijit/form/ValidationTextBox", "dojox/validate/web", "dijit/form/Button", "dijit/form/CheckBox", "dijit/form/DateTextBox", "dijit/Dialog", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem"
-            ], function(declare, parser, ready, _WidgetBase, _TemplatedMixin,
-            _WidgetsInTemplateMixin, registry, dom, domConstruct, query, i18n, template){
+            require(["myApp/formWidget", "dojo/parser", "dijit/registry", "dojo/_base/config", "dijit/form/DropDownButton", "dijit/DropDownMenu", "dijit/MenuItem", "dojo/domReady!"],
+                function(customDijitController, parser, registry, config) {
+                    var myCustomDijitController = new customDijitController();
+                    myCustomDijitController.placeAt("formDiv");
 
-                declare("form", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], { 
-                    templateString: template,
-
-                    cashValue: i18n.cashLabel,
-                    chequeValue: i18n.chequelabel,
-                    ddValue: i18n.demandlabel,
-
-                    vegetarian: i18n.mealVegetarian,
-                    muslim: i18n.mealMuslim,
-                    kosher: i18n.mealKosher,
-                    japanese: i18n.mealJapanese,
-
-                    reset: function(){
-                        var f = document.getElementById("myForm");
-                        return confirm(i18n.resetComfirmMessage);
-                    },
-
-                    valid: function(){
-                        var ps = query("form label p");
-                        for (var i = 0; i < ps.length; i++) {
-                            domConstruct.destroy(ps[i]);
-                        };
-                        var form = dom.byId("myForm");
-                        var val = false;
-                        var f = document.getElementById("myForm");
-                        if(f.email.value ==""||f.firstName.value == ""||f.lastName.value == ""|| f.company.value == ""||f.address.value == ""||f.phone.value ==""){
-                            val = false;
-                        }else{
-                           if(this.emailNode.isValid()&&this.phoneNode.isValid()&&this.payable.isValid()){
-                                val = true;
-                            }else{
-                                alert(i18n.invalidConfirmMessage);
-                                return false;
-                            }
-                        }
-                        if(val){
-                                var inputs = query("form [name]");
-                                var values = [];
-                                var cont = 0;
-                                var paymentMode = "";
-                                for (var i = 0; i < inputs.length; i++) {
-                                    if(i > 9 && i < 13){
-                                        if(inputs[i].checked){
-                                            paymentMode = paymentMode + inputs[i].value;
-                                        }
-                                        if(i==12){
-                                            values[cont] = paymentMode;
-                                            cont++;
-                                        }
-                                    }else{
-                                        values[cont] = inputs[i].value;
-                                        cont++;
-                                    }
-                                };
-                                var div = query("#content div")[0];
-                                domConstruct.destroy(div);
-                                var content = dom.byId("content");
-                                div = domConstruct.create("div",{innerHTML: ""}, content);
-                                var labels = query("form label");
-                                cont = 0;
-                                for (var i = 0; i < labels.length; i++) {
-                                    var label = labels[i].innerHTML;
-                                    if((label != i18n.cashLabel) && label != i18n.chequelabel && label != i18n.demandlabel){
-
-                                        var ks =domConstruct.create("strong",{
-                                            innerHTML: label+":"}, div
-                                        );
-                                        var p = domConstruct.create("p",{innerHTML: values[cont]+"<br>"}, ks, "after");
-                                        cont++;
-                                    }
-                                };
-                            var dialog = registry.byId("myConfirmDialog").show();
-                        }else{
-                            var rojos = query("form label.required");
-                            for (var i = 0; i < rojos.length; i++) {
-                                domConstruct.create("p", {
-                                    innerHTML: "*",
-                                    style: {
-                                        color: "#ff0000"
-                                    }
-                                }, rojos[i]);
-                            }
-                            alert(i18n.requereMessage);
-                            return false;
-                        }
-                        return true;
-                    },
-
-                    cashChequed: function(){
-                        if(this.cashNode.checked){
-                            this.chequeNode.set("checked", false);
-                            this.demandNode.set("checked", false);
-                        }
-                    },
-
-                    chequeChequed: function(){
-                        if(this.chequeNode.checked){
-                            this.cashNode.set("checked", false);
-                            this.demandNode.set("checked", false);
-                        }
-                    },
-
-                    demandChequed: function(){
-                        if(this.demandNode.checked){
-                            this.cashNode.set("checked", false);
-                            this.chequeNode.set("checked", false);
-                        }
-                    },
-
-                    postCreate: function(){
-                        this.fNameLabel.innerHTML = i18n.fNameLabel;
-                        this.lNameLabel.innerHTML = i18n.lNameLabel;
-                        this.companyLabel.innerHTML = i18n.companyLabel;
-                        this.addressLabel.innerHTML = i18n.addressLabel;
-                        this.cityLabel.innerHTML = i18n.cityLabel;
-                        this.stateLabel.innerHTML = i18n.stateLabel;
-                        this.countryLabel.innerHTML = i18n.countryLabel;
-                        this.emailLabel.innerHTML = i18n.emailLabel;
-                        this.phoneLabel.innerHTML = i18n.phoneLabel;
-                        this.mealLabel.innerHTML = i18n.mealLabel;
-                        this.paymentLabel.innerHTML = i18n.paymentLabel;
-                        this.chequenoLabel.innerHTML = i18n.chequenoLabel;
-                        this.drawnLabel.innerHTML = i18n.drawnLabel;
-                        this.payableLabel.innerHTML = i18n.payableLabel;
-
-                        this.registerLegend.innerHTML = i18n.registerLegend;
-                        this.lunchLegend.innerHTML = i18n.lunchLegend;
-                        this.paymentLegend.innerHTML = i18n.paymentLegend;
-
-                        this.cashLabel.innerHTML = i18n.cashLabel;
-                        this.chequelabel.innerHTML = i18n.chequelabel;
-                        this.demandlabel.innerHTML = i18n.demandlabel;
-
-                        this.buttonSubmitLabel.set("label", i18n.buttonSubmitLabel);
-                        this.buttonResetLabel.set("label", i18n.buttonResetLabel);
-
-                        this.emailNode.set("invalidMessage",i18n.invalidMessageEmail);
-                        this.phoneNode.set("invalidMessage",i18n.invalidMessagePhone);
-
-                        var legend = query("legend");
-                        for (var i = 0; i < legend.length; i++) {
-                            domConstruct.destroy(legend[i])
-                        };
-                    }
-                    
-                });
-                ready(function(){
                     parser.parse();
 
+                    registry.byId("english").on("click", function(evt){
+                        if(config.locale != "en-us")
+                        window.location.href = "?en-us";
+                    });
+
+                    registry.byId("spanish").on("click", function(evt){
+                        if(config.locale != "es")
+                        window.location.href = "?es";
+                    });
                 });
-            });
         </script>
     </head>
     <body class="claro">
-        <div data-dojo-type="dijit/Dialog" id="myConfirmDialog" data-dojo-id="myConfirmDialog" title="Confirm Dialog" style="display: none">
-            <div id="content" class="dijitDialogPaneContentArea">
-                
-            </div>
-            <div class="dijitDialogPaneActionBar">
-                <button id="okButton" data-dojo-type="dijit/form/Button" type="button">
-                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                        require(["dojo/dom", "dojo/dom-construct", "dojo/query", "myApp/getValues"], function(dom, domConstruct, query, getValues){
-                            myConfirmDialog.hide();
-                            
-                            var labels = query("#myConfirmDialog strong");
-                            values = getValues;
-                            var cont = 0;
-                            for (var i = 0; i < labels.length; i++) {
-                                var label = labels[i].innerHTML;
-                                console.log(label+" = "+values[i]);
-                            };
-
-                            var form = dom.byId("myForm");
-                            form.submit();
-                        });
-                    </script>
-                </button>
-                <button id="cancelButton" data-dojo-type="dijit/form/Button" type="button">
-                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                        myConfirmDialog.hide();
-                    </script>
-                </button>
-            </div>
-            <script>
-                require(["dojo/dom", "dojo/i18n! myApp/nls/formContent", "dojo/domReady!"], function(dom, i18n){
-                    var okButton = dom.byId("okButton");
-                    var cancelButton = dom.byId("cancelButton");
-                    okButton.innerHTML = i18n.okButton + okButton.innerHTML;
-                    cancelButton.innerHTML = i18n.cancelButton + cancelButton.innerHTML;
-                });
-            </script>
-        </div>
-        <div id="containerDiv">
-        	<div id="header">
-                <div id="title">
-                     <b>Workshop Registration</b>
-                </div>
-                <div id="actionsDiv" data-dojo-type="dijit/form/DropDownButton">
-                    <span>More Actions</span>
-                    <div data-dojo-type="dijit/DropDownMenu" id="submenu2">
-                        <div data-dojo-type="dijit/MenuItem">Inglish en-us
-                            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                                require(["dojo/_base/config"], function(config){
-                                    if(config.locale != "en-us")
-                                        window.location.href = "?en-us";
-                                });
-                            </script>
-                        </div>
-                        <div data-dojo-type="dijit/MenuItem">Español es
-                            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                                require(["dojo/_base/config"], function(config){
-                                    if(config.locale != "es")
-                                        window.location.href = "?es";
-                                });
-                            </script>
+        <div id="body">
+            <div id="containerDiv">
+                <div id="header">
+                    <div id="title">
+                         <b>Workshop Registration</b>
+                    </div>
+                    <div id="actionsDiv" data-dojo-type="dijit/form/DropDownButton">
+                        <span>More Actions</span>
+                        <div data-dojo-type="dijit/DropDownMenu" id="submenu2">
+                            <div id="english" data-dojo-type="dijit/MenuItem">English</div>
+                            <div id="spanish" data-dojo-type="dijit/MenuItem">Español</div>
                         </div>
                     </div>
                 </div>
+                    <div id="formDiv">
+
+                    </div>
             </div>
-                <span data-dojo-type="form"></span>
         </div>
- 	</body>
+    </body>
 
 </html>
